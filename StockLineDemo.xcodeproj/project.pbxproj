@@ -13,6 +13,7 @@
 		09738FB32268774F00F3B404 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09738FB22268774F00F3B404 /* Assets.xcassets */; };
 		09738FB62268774F00F3B404 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09738FB42268774F00F3B404 /* LaunchScreen.storyboard */; };
 		09738FB92268774F00F3B404 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 09738FB82268774F00F3B404 /* main.m */; };
+		C60345D4BD0BC66B92F5452A /* libPods-StockLineDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F04104EEE8FEEFAD9B450AA8 /* libPods-StockLineDemo.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,9 @@
 		09738FB52268774F00F3B404 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		09738FB72268774F00F3B404 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		09738FB82268774F00F3B404 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		6F3546292471D8A50279ABB0 /* Pods-StockLineDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StockLineDemo.debug.xcconfig"; path = "Target Support Files/Pods-StockLineDemo/Pods-StockLineDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		9EB7E99922E3F0C2CD100029 /* Pods-StockLineDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StockLineDemo.release.xcconfig"; path = "Target Support Files/Pods-StockLineDemo/Pods-StockLineDemo.release.xcconfig"; sourceTree = "<group>"; };
+		F04104EEE8FEEFAD9B450AA8 /* libPods-StockLineDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-StockLineDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +37,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C60345D4BD0BC66B92F5452A /* libPods-StockLineDemo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +49,8 @@
 			children = (
 				09738FA82268774E00F3B404 /* StockLineDemo */,
 				09738FA72268774E00F3B404 /* Products */,
+				09A0B5F27C60B9C119CF4CE3 /* Pods */,
+				599603ABB75075052CEFAEDC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -71,6 +78,24 @@
 			path = StockLineDemo;
 			sourceTree = "<group>";
 		};
+		09A0B5F27C60B9C119CF4CE3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6F3546292471D8A50279ABB0 /* Pods-StockLineDemo.debug.xcconfig */,
+				9EB7E99922E3F0C2CD100029 /* Pods-StockLineDemo.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		599603ABB75075052CEFAEDC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F04104EEE8FEEFAD9B450AA8 /* libPods-StockLineDemo.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -78,9 +103,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 09738FBC2268774F00F3B404 /* Build configuration list for PBXNativeTarget "StockLineDemo" */;
 			buildPhases = (
+				7134184DD8FDDB473B3318A4 /* [CP] Check Pods Manifest.lock */,
 				09738FA22268774E00F3B404 /* Sources */,
 				09738FA32268774E00F3B404 /* Frameworks */,
 				09738FA42268774E00F3B404 /* Resources */,
+				DB08C80A4CD5459B308EEBFC /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -135,6 +162,53 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		7134184DD8FDDB473B3318A4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-StockLineDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DB08C80A4CD5459B308EEBFC /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-StockLineDemo/Pods-StockLineDemo-resources.sh",
+				"${PODS_ROOT}/MJRefresh/MJRefresh/MJRefresh.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MJRefresh.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-StockLineDemo/Pods-StockLineDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		09738FA22268774E00F3B404 /* Sources */ = {
@@ -283,6 +357,7 @@
 		};
 		09738FBD2268774F00F3B404 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6F3546292471D8A50279ABB0 /* Pods-StockLineDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -299,6 +374,7 @@
 		};
 		09738FBE2268774F00F3B404 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9EB7E99922E3F0C2CD100029 /* Pods-StockLineDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
