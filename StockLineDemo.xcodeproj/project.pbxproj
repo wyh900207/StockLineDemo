@@ -13,6 +13,9 @@
 		09738FB32268774F00F3B404 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 09738FB22268774F00F3B404 /* Assets.xcassets */; };
 		09738FB62268774F00F3B404 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09738FB42268774F00F3B404 /* LaunchScreen.storyboard */; };
 		09738FB92268774F00F3B404 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 09738FB82268774F00F3B404 /* main.m */; };
+		09738FC522687E2D00F3B404 /* HLKLineMainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09738FC422687E2D00F3B404 /* HLKLineMainView.m */; };
+		09738FCB2268813900F3B404 /* HLKLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 09738FCA2268813900F3B404 /* HLKLine.m */; };
+		09738FD0226881A800F3B404 /* HLKLineModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 09738FCF226881A800F3B404 /* HLKLineModel.m */; };
 		C60345D4BD0BC66B92F5452A /* libPods-StockLineDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F04104EEE8FEEFAD9B450AA8 /* libPods-StockLineDemo.a */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +30,14 @@
 		09738FB52268774F00F3B404 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		09738FB72268774F00F3B404 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		09738FB82268774F00F3B404 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		09738FC322687E2D00F3B404 /* HLKLineMainView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HLKLineMainView.h; sourceTree = "<group>"; };
+		09738FC422687E2D00F3B404 /* HLKLineMainView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HLKLineMainView.m; sourceTree = "<group>"; };
+		09738FC722687FC300F3B404 /* HLKLineConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HLKLineConfig.h; sourceTree = "<group>"; };
+		09738FC92268813900F3B404 /* HLKLine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HLKLine.h; sourceTree = "<group>"; };
+		09738FCA2268813900F3B404 /* HLKLine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HLKLine.m; sourceTree = "<group>"; };
+		09738FCE226881A800F3B404 /* HLKLineModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HLKLineModel.h; sourceTree = "<group>"; };
+		09738FCF226881A800F3B404 /* HLKLineModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HLKLineModel.m; sourceTree = "<group>"; };
+		09738FD12268837D00F3B404 /* HLKLineHeader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HLKLineHeader.h; sourceTree = "<group>"; };
 		6F3546292471D8A50279ABB0 /* Pods-StockLineDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StockLineDemo.debug.xcconfig"; path = "Target Support Files/Pods-StockLineDemo/Pods-StockLineDemo.debug.xcconfig"; sourceTree = "<group>"; };
 		9EB7E99922E3F0C2CD100029 /* Pods-StockLineDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StockLineDemo.release.xcconfig"; path = "Target Support Files/Pods-StockLineDemo/Pods-StockLineDemo.release.xcconfig"; sourceTree = "<group>"; };
 		F04104EEE8FEEFAD9B450AA8 /* libPods-StockLineDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-StockLineDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -47,6 +58,7 @@
 		09738F9D2268774E00F3B404 = {
 			isa = PBXGroup;
 			children = (
+				09738FC222687DF600F3B404 /* KLine */,
 				09738FA82268774E00F3B404 /* StockLineDemo */,
 				09738FA72268774E00F3B404 /* Products */,
 				09A0B5F27C60B9C119CF4CE3 /* Pods */,
@@ -78,13 +90,51 @@
 			path = StockLineDemo;
 			sourceTree = "<group>";
 		};
+		09738FC222687DF600F3B404 /* KLine */ = {
+			isa = PBXGroup;
+			children = (
+				09738FD12268837D00F3B404 /* HLKLineHeader.h */,
+				09738FC722687FC300F3B404 /* HLKLineConfig.h */,
+				09738FCD2268819600F3B404 /* Model */,
+				09738FCC2268818300F3B404 /* MainView */,
+			);
+			path = KLine;
+			sourceTree = "<group>";
+		};
+		09738FC82268811C00F3B404 /* KLine */ = {
+			isa = PBXGroup;
+			children = (
+				09738FC92268813900F3B404 /* HLKLine.h */,
+				09738FCA2268813900F3B404 /* HLKLine.m */,
+			);
+			path = KLine;
+			sourceTree = "<group>";
+		};
+		09738FCC2268818300F3B404 /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				09738FC82268811C00F3B404 /* KLine */,
+				09738FC322687E2D00F3B404 /* HLKLineMainView.h */,
+				09738FC422687E2D00F3B404 /* HLKLineMainView.m */,
+			);
+			path = MainView;
+			sourceTree = "<group>";
+		};
+		09738FCD2268819600F3B404 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				09738FCE226881A800F3B404 /* HLKLineModel.h */,
+				09738FCF226881A800F3B404 /* HLKLineModel.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		09A0B5F27C60B9C119CF4CE3 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
 				6F3546292471D8A50279ABB0 /* Pods-StockLineDemo.debug.xcconfig */,
 				9EB7E99922E3F0C2CD100029 /* Pods-StockLineDemo.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -215,9 +265,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09738FCB2268813900F3B404 /* HLKLine.m in Sources */,
 				09738FAE2268774E00F3B404 /* ViewController.m in Sources */,
 				09738FB92268774F00F3B404 /* main.m in Sources */,
 				09738FAB2268774E00F3B404 /* AppDelegate.m in Sources */,
+				09738FC522687E2D00F3B404 /* HLKLineMainView.m in Sources */,
+				09738FD0226881A800F3B404 /* HLKLineModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,7 +413,9 @@
 			baseConfigurationReference = 6F3546292471D8A50279ABB0 /* Pods-StockLineDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3U4T4928GM;
 				INFOPLIST_FILE = StockLineDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -368,7 +423,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = orange.com.StockLineDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -377,7 +433,9 @@
 			baseConfigurationReference = 9EB7E99922E3F0C2CD100029 /* Pods-StockLineDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 3U4T4928GM;
 				INFOPLIST_FILE = StockLineDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -385,7 +443,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = orange.com.StockLineDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
