@@ -7,12 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <CoreGraphics/CoreGraphics.h>
 #import "HLKLineModel.h"
+#import "HLKLinePositionModel.h"
 
 @interface HLKLine : NSObject
 
-@property (nonatomic, strong) HLKLineModel *kLineModel;
+/**
+ *  K线的位置model
+ */
+@property (nonatomic, strong) HLKLinePositionModel *position_model;
+
+/**
+ *  k线的model
+ */
+@property (nonatomic, strong) HLKLineModel *line_model;
 
 /**
  *  最大的Y
