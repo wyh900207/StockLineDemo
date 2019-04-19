@@ -191,8 +191,8 @@
         maxAssert = obj.high.floatValue < maxAssert ? : obj.high.floatValue;
     }];
 
-    maxAssert = 1.0001;
-    minAssert = 0.9991;
+//    maxAssert = 1.0001;
+//    minAssert = 0.9991;
 
     CGFloat minY = 20;
     CGFloat maxY = self.bounds.size.height - 15;
