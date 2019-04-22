@@ -47,7 +47,7 @@
     
     CGContextSetLineWidth(context, LINE_SHADOW_WIDTH);
     const CGPoint shadowPoints[] = {self.position_model.high_point, self.position_model.low_point};
-    CGContextStrokeLineSegments(context, shadowPoints, LINE_SHADOW_WIDTH);
+    CGContextStrokeLineSegments(context, shadowPoints, 2);
     
 //    NSDate *date = [NSDate dateWithTimeIntervalSince1970:self.line_model.date.doubleValue * 0.001];
 //    NSDateFormatter *format = [NSDateFormatter new];

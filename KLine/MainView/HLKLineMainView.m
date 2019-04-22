@@ -187,8 +187,8 @@
             minAssert = obj.low.floatValue;
         }
         
-        minAssert = obj.low.floatValue > minAssert ? : obj.low.floatValue;
-        maxAssert = obj.high.floatValue < maxAssert ? : obj.high.floatValue;
+        minAssert = obj.low.floatValue > minAssert ? minAssert : obj.low.floatValue;
+        maxAssert = obj.high.floatValue < maxAssert ? maxAssert : obj.high.floatValue;
     }];
 
 //    maxAssert = 1.0001;
