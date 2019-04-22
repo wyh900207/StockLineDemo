@@ -85,7 +85,8 @@
     
     [self drawKLineMainView];
     // 设置contentOffset
-    CGFloat kLineViewWidth = self.kLineModels.count * 20 + self.kLineModels.count + 1 + 10;
+    CGFloat k_line_width = lineWidth();
+    CGFloat kLineViewWidth = self.kLineModels.count * k_line_width + self.kLineModels.count + 1 + 10;
     CGFloat offset = kLineViewWidth - self.scrollView.frame.size.width;
     
     if (offset > 0) {
@@ -152,7 +153,7 @@
 #pragma mark - UIScrollViewDelegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    NSLog(@"这是  %f-----%f=====%f",scrollView.contentSize.width,scrollView.contentOffset.x,self.kLineMainView.frame.size.width);
+//    NSLog(@"这是  %f-----%f=====%f",scrollView.contentSize.width,scrollView.contentOffset.x,self.kLineMainView.frame.size.width);
 }
 
 #pragma mark - HLKLineMainViewDelegate

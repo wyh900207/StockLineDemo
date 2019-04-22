@@ -9,12 +9,15 @@
 #import "ViewController.h"
 //#import "HLKLineMainView.h"
 #import "OTJKLineView.h"
+#import "OTJQuotationPriceView.h"
+
 #import <Masonry/Masonry.h>
 
 @interface ViewController ()
 
 //@property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) OTJKLineView *mainview;
+@property (nonatomic, strong) OTJQuotationPriceView *priceView;
 
 @end
 
@@ -23,8 +26,23 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    [self.view addSubview:self.scro llView];
+
+    
+    [self.view addSubview:self.priceView];
     [self.view addSubview:self.mainview];
+    
+    [self.priceView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view).inset(64);
+        make.left.right.equalTo(self.view);
+        make.height.equalTo(@70);
+    }];
+    [self.mainview mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.priceView.mas_bottom);
+        make.left.right.equalTo(self.view);
+        make.height.equalTo(@200);
+    }];
+    
+
     [self.mainview reDraw];
 }
 
@@ -46,15 +64,15 @@
         _mainview = [OTJKLineView new];
         _mainview.mainViewType = HLKLineMainViewTypeKLine;
         _mainview.kLineModels = [self allKLineModels];
-        [self.view addSubview:_mainview];
-        
-        [_mainview mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.right.equalTo(self.view);
-            make.top.equalTo(self.view).offset(200);
-            make.height.equalTo(@200);
-        }];
     }
     return _mainview;
+}
+
+- (OTJQuotationPriceView *)priceView {
+    if (!_priceView) {
+        _priceView = [OTJQuotationPriceView new];
+    }
+    return _priceView;
 }
 
 #pragma mark - Private
