@@ -9,6 +9,8 @@
 #import "HLKLine.h"
 #import "HLKLineConfig.h"
 
+#import "OTJDateUtils.h"
+
 @interface HLKLine ()
 
 // context
@@ -47,10 +49,12 @@
     const CGPoint shadowPoints[] = {self.position_model.high_point, self.position_model.low_point};
     CGContextStrokeLineSegments(context, shadowPoints, LINE_SHADOW_WIDTH);
     
-    NSDate *date = [NSDate dateWithTimeIntervalSince1970:self.line_model.date.doubleValue * 0.001];
-    NSDateFormatter *format = [NSDateFormatter new];
-    format.dateFormat = @"HH:mm";
-    NSString *dateStr = [format stringFromDate:date];
+//    NSDate *date = [NSDate dateWithTimeIntervalSince1970:self.line_model.date.doubleValue * 0.001];
+//    NSDateFormatter *format = [NSDateFormatter new];
+//    format.dateFormat = @"HH:mm";
+//    NSString *dateStr = [format stringFromDate:date];
+    
+    NSString *dateStr = [OTJDateUtils dateStringWith:self.line_model.date];
     
     CGPoint draw_date_point = CGPointMake(self.position_model.low_point.x + 1, self.maxY + 1.5);
     if (CGPointEqualToPoint(self.lastDrawDatePoint, CGPointZero) || draw_date_point.x - self.lastDrawDatePoint.x > 60) {

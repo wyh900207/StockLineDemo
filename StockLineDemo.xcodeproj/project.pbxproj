@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09380A06226D6049005ADA25 /* OTJDateUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 09380A05226D6049005ADA25 /* OTJDateUtils.m */; };
 		09738FAB2268774E00F3B404 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 09738FAA2268774E00F3B404 /* AppDelegate.m */; };
 		09738FAE2268774E00F3B404 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09738FAD2268774E00F3B404 /* ViewController.m */; };
 		09738FB12268774E00F3B404 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09738FAF2268774E00F3B404 /* Main.storyboard */; };
@@ -23,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		09380A04226D6049005ADA25 /* OTJDateUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OTJDateUtils.h; sourceTree = "<group>"; };
+		09380A05226D6049005ADA25 /* OTJDateUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OTJDateUtils.m; sourceTree = "<group>"; };
 		09738FA62268774E00F3B404 /* StockLineDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StockLineDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09738FA92268774E00F3B404 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		09738FAA2268774E00F3B404 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -66,6 +69,8 @@
 		09738F9D2268774E00F3B404 = {
 			isa = PBXGroup;
 			children = (
+				09380A04226D6049005ADA25 /* OTJDateUtils.h */,
+				09380A05226D6049005ADA25 /* OTJDateUtils.m */,
 				09738FD6226977AB00F3B404 /* UIColor+Hex.h */,
 				09738FD5226977AB00F3B404 /* UIColor+Hex.m */,
 				09738FC222687DF600F3B404 /* KLine */,
@@ -281,6 +286,7 @@
 			files = (
 				09738FCB2268813900F3B404 /* HLKLine.m in Sources */,
 				09738FAE2268774E00F3B404 /* ViewController.m in Sources */,
+				09380A06226D6049005ADA25 /* OTJDateUtils.m in Sources */,
 				09738FB92268774F00F3B404 /* main.m in Sources */,
 				09738FAB2268774E00F3B404 /* AppDelegate.m in Sources */,
 				09738FC522687E2D00F3B404 /* HLKLineMainView.m in Sources */,
