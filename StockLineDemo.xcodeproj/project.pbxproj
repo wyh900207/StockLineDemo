@@ -10,6 +10,7 @@
 		09380A06226D6049005ADA25 /* OTJDateUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 09380A05226D6049005ADA25 /* OTJDateUtils.m */; };
 		09380A09226D7202005ADA25 /* OTJKLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09380A08226D7202005ADA25 /* OTJKLineView.m */; };
 		09380A0C226DB22B005ADA25 /* OTJQuotationPriceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09380A0B226DB22B005ADA25 /* OTJQuotationPriceView.m */; };
+		09380A11226DC56D005ADA25 /* OTJSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09380A10226DC56D005ADA25 /* OTJSegmentView.m */; };
 		09738FAB2268774E00F3B404 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 09738FAA2268774E00F3B404 /* AppDelegate.m */; };
 		09738FAE2268774E00F3B404 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09738FAD2268774E00F3B404 /* ViewController.m */; };
 		09738FB12268774E00F3B404 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09738FAF2268774E00F3B404 /* Main.storyboard */; };
@@ -32,6 +33,8 @@
 		09380A08226D7202005ADA25 /* OTJKLineView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OTJKLineView.m; sourceTree = "<group>"; };
 		09380A0A226DB22B005ADA25 /* OTJQuotationPriceView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OTJQuotationPriceView.h; sourceTree = "<group>"; };
 		09380A0B226DB22B005ADA25 /* OTJQuotationPriceView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OTJQuotationPriceView.m; sourceTree = "<group>"; };
+		09380A0F226DC56D005ADA25 /* OTJSegmentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OTJSegmentView.h; sourceTree = "<group>"; };
+		09380A10226DC56D005ADA25 /* OTJSegmentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OTJSegmentView.m; sourceTree = "<group>"; };
 		09738FA62268774E00F3B404 /* StockLineDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StockLineDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09738FA92268774E00F3B404 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		09738FAA2268774E00F3B404 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -81,6 +84,15 @@
 			path = Price;
 			sourceTree = "<group>";
 		};
+		09380A0E226DC54F005ADA25 /* SegementView */ = {
+			isa = PBXGroup;
+			children = (
+				09380A0F226DC56D005ADA25 /* OTJSegmentView.h */,
+				09380A10226DC56D005ADA25 /* OTJSegmentView.m */,
+			);
+			path = SegementView;
+			sourceTree = "<group>";
+		};
 		09738F9D2268774E00F3B404 = {
 			isa = PBXGroup;
 			children = (
@@ -88,6 +100,7 @@
 				09380A05226D6049005ADA25 /* OTJDateUtils.m */,
 				09738FD6226977AB00F3B404 /* UIColor+Hex.h */,
 				09738FD5226977AB00F3B404 /* UIColor+Hex.m */,
+				09380A0E226DC54F005ADA25 /* SegementView */,
 				09380A0D226DB236005ADA25 /* Price */,
 				09738FC222687DF600F3B404 /* KLine */,
 				09738FA82268774E00F3B404 /* StockLineDemo */,
@@ -304,6 +317,7 @@
 			files = (
 				09380A0C226DB22B005ADA25 /* OTJQuotationPriceView.m in Sources */,
 				09738FCB2268813900F3B404 /* HLKLine.m in Sources */,
+				09380A11226DC56D005ADA25 /* OTJSegmentView.m in Sources */,
 				09738FAE2268774E00F3B404 /* ViewController.m in Sources */,
 				09380A06226D6049005ADA25 /* OTJDateUtils.m in Sources */,
 				09738FB92268774F00F3B404 /* main.m in Sources */,

@@ -10,6 +10,7 @@
 //#import "HLKLineMainView.h"
 #import "OTJKLineView.h"
 #import "OTJQuotationPriceView.h"
+#import "OTJSegmentView.h"
 
 #import <Masonry/Masonry.h>
 
@@ -18,6 +19,7 @@
 //@property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) OTJKLineView *mainview;
 @property (nonatomic, strong) OTJQuotationPriceView *priceView;
+@property (nonatomic, strong) OTJSegmentView *segmentView;
 
 @end
 
@@ -30,18 +32,26 @@
     
     [self.view addSubview:self.priceView];
     [self.view addSubview:self.mainview];
+    [self.view addSubview:self.segmentView];
     
     [self.priceView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view).inset(64);
         make.left.right.equalTo(self.view);
         make.height.equalTo(@70);
     }];
-    [self.mainview mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.segmentView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.priceView.mas_bottom);
+        make.left.right.equalTo(self.view);
+        make.height.equalTo(@40);
+    }];
+    [self.mainview mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.segmentView.mas_bottom);
         make.left.right.equalTo(self.view);
         make.height.equalTo(@200);
     }];
     
+    
+    self.segmentView.titles = @[@"分时", @"1分", @"1分", @"1分", @"1分", @"1分"];
 
     [self.mainview reDraw];
 }
@@ -73,6 +83,15 @@
         _priceView = [OTJQuotationPriceView new];
     }
     return _priceView;
+}
+
+- (OTJSegmentView *)segmentView {
+    if (!_segmentView) {
+        _segmentView = [OTJSegmentView new];
+        _segmentView.backgroundColor = [UIColor orangeColor];
+        _segmentView.titles = @[@"分时", @"1分", @"1分", @"1分", @"1分", @"1分"];
+    }
+    return _segmentView;
 }
 
 #pragma mark - Private
