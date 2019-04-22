@@ -10,6 +10,7 @@
 #import "HLKLineModel.h"
 #import "HLKLinePositionModel.h"
 #import "HLKLine.h"
+#import <Masonry/Masonry.h>
 
 @interface HLKLineMainView ()
 
@@ -55,12 +56,19 @@
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
     if ([keyPath isEqualToString:@"contentOffset"]) {
+        CGFloat k_line_width = lineWidth();
+        CGFloat k_line_gap = LINE_SPACE;
+        
         CGFloat difValue = ABS(self.parentScrollView.contentOffset.x - self.oldContentOffsetX);
-        if (difValue >= 21) {
+        if (difValue >= (k_line_width + k_line_gap)) {
             self.oldContentOffsetX = self.parentScrollView.contentOffset.x;
             [self drawMainView];
-            CGRect rect = self.frame;
-            self.frame = CGRectMake(self.parentScrollView.contentOffset.x, rect.origin.y, rect.size.width, rect.size.height);
+//            CGRect rect = self.frame;
+//            self.frame = CGRectMake(self.parentScrollView.contentOffset.x, rect.origin.y, rect.size.width, rect.size.height);
+            [self mas_updateConstraints:^(MASConstraintMaker *make) {
+                make.left.equalTo(self.parentScrollView).offset(self.parentScrollView.contentOffset.x);
+                make.width.equalTo(self.parentScrollView);
+            }];
         }
     }
 }
@@ -80,7 +88,7 @@
 
     NSMutableArray *kLineColors = @[].mutableCopy;
     
-    // 指标
+    // K线图上部的各种指标
     CGContextSetFillColorWithColor(context, ASSIST_BACKGROUND_COLOR.CGColor);
     CGContextFillRect(context, CGRectMake(0, 0, rect.size.width, 15));
 
@@ -99,6 +107,12 @@
             [kLineColors addObject:color];
         }];
     }
+    
+    if (self.delegate && kLineColors > 0) {
+        if ([self.delegate respondsToSelector:@selector(kLineMainViewCurrentNeedDrawKLineColors:)]) {
+            [self.delegate kLineMainViewCurrentNeedDrawKLineColors:kLineColors];
+        }
+    }
 
 }
 
@@ -114,7 +128,8 @@
 }
 
 - (void)updateMainViewWidth {
-    CGFloat kLineViewWidth = self.kLineModels.count * 20 + (self.kLineModels.count + 1) + 10;
+    CGFloat k_line_width = lineWidth();
+    CGFloat kLineViewWidth = self.kLineModels.count * k_line_width + (self.kLineModels.count + 1) + 10;
     
     if (kLineViewWidth < self.parentScrollView.bounds.size.width) {
         kLineViewWidth = self.parentScrollView.bounds.size.width;
@@ -122,7 +137,16 @@
     
     CGRect rect = self.frame;
     
-    self.frame = CGRectMake(rect.origin.x, self.parentScrollView.contentOffset.x, rect.size.width, rect.size.height);
+    if (self.pinchStartIndex) {
+        CGFloat new_x = self.pinchStartIndex * (k_line_width + 1) + 1;
+        [self.parentScrollView setContentOffset:CGPointMake(new_x, 0) animated:NO];
+    }
+    
+//    self.frame = CGRectMake(rect.origin.x, self.parentScrollView.contentOffset.x, rect.size.width, rect.size.height);
+    [self mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo(self.parentScrollView);
+        make.left.equalTo(self.parentScrollView).offset(self.parentScrollView.contentOffset.x);
+    }];
     
     [self layoutIfNeeded];
     
@@ -136,23 +160,23 @@
 #pragma mark - Private
 
 - (NSArray *)extractNeedDrawModels {
-    CGFloat lineGap = 1;
-    CGFloat lineWidth = 20;
+    CGFloat lineGap = LINE_SPACE;
+    CGFloat k_line_width = lineWidth();
 
     // 数组个数
     CGFloat scrollViewWidth = self.parentScrollView.frame.size.width;
-    NSInteger needDrawKLineCount = (scrollViewWidth - lineGap) / (lineGap + lineWidth);
+    NSInteger needDrawKLineCount = (scrollViewWidth - lineGap) / (lineGap + k_line_width);
 
     // 起始位置
     NSInteger needDrawKLineStartIndex;
 
-//    if (self.pinchStartIndex > 0) {
-//        needDrawKLineStartIndex = self.pinchStartIndex;
-//        _needDrawStartIndex = self.pinchStartIndex;
-//        self.pinchStartIndex = -1;
-//    } else {
-//        needDrawKLineStartIndex = [self getNeedDrawStartIndexWithScroll:YES];
-//    }
+    if (self.pinchStartIndex > 0) {
+        needDrawKLineStartIndex = self.pinchStartIndex;
+        _needDrawStartIndex = self.pinchStartIndex;
+        self.pinchStartIndex = -1;
+    } else {
+        needDrawKLineStartIndex = [self getNeedDrawStartIndexWithScroll:YES];
+    }
     
     needDrawKLineStartIndex = [self getNeedDrawStartIndexWithScroll:YES];
 
@@ -165,6 +189,10 @@
         } else {
             [self.lineModels addObjectsFromArray:[self.kLineModels subarrayWithRange:NSMakeRange(needDrawKLineStartIndex, self.kLineModels.count - needDrawKLineStartIndex)]];
         }
+    }
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(kLineMainViewCurrentNeedDrawKLineModels:)]) {
+        [self.delegate kLineMainViewCurrentNeedDrawKLineModels:self.lineModels];
     }
 
     return self.lineModels;
@@ -190,9 +218,6 @@
         minAssert = obj.low.floatValue > minAssert ? minAssert : obj.low.floatValue;
         maxAssert = obj.high.floatValue < maxAssert ? maxAssert : obj.high.floatValue;
     }];
-
-//    maxAssert = 1.0001;
-//    minAssert = 0.9991;
 
     CGFloat minY = 20;
     CGFloat maxY = self.bounds.size.height - 15;
@@ -227,7 +252,9 @@
     for (NSUInteger idx = 0; idx < kLineModels.count; idx++) {
         HLKLineModel *klineModel = kLineModels[idx];
         
-        CGFloat x_position = self.startXPosition + idx * (20 + 1);
+        CGFloat k_line_width = lineWidth();
+        CGFloat line_gap = LINE_SPACE;
+        CGFloat x_position = self.startXPosition + idx * (k_line_width + line_gap);
         
         CGFloat open_point_y = ABS(maxY - (klineModel.open.floatValue - minAssert) / unitValue);
         CGFloat close_point_y = ABS(maxY - (klineModel.close.floatValue - minAssert) / unitValue);
@@ -271,6 +298,15 @@
         [self.positionModels addObject:line_position_model];
     }
     
+    if (self.delegate) {
+        if ([self.delegate respondsToSelector:@selector(kLineMainViewCurrentMaxPrice:minPrice:)]) {
+            [self.delegate kLineMainViewCurrentMaxPrice:maxAssert minPrice:minAssert];
+        }
+        if ([self.delegate respondsToSelector:@selector(kLineMainViewCurrentNeedDrawKLinePositionModels:)]) {
+            [self.delegate kLineMainViewCurrentNeedDrawKLinePositionModels:self.positionModels];
+        }
+    }
+    
     return self.positionModels;
 }
 
@@ -279,46 +315,45 @@
 - (NSInteger)getNeedDrawStartIndexWithScroll:(BOOL)scorll {
     if (scorll) {
         CGFloat scrollViewOffsetX = self.parentScrollView.contentOffset.x < 0 ? 0 : self.parentScrollView.contentOffset.x;
-        NSUInteger leftArrCount = ABS(scrollViewOffsetX - 1) / (1 + 20);
+        
+        CGFloat k_line_width = lineWidth();
+        
+        NSUInteger leftArrCount = ABS(scrollViewOffsetX - 1) / (1 + k_line_width);
         _needDrawStartIndex = leftArrCount;
     }
 
     return _needDrawStartIndex;
 }
 
-- (NSArray<HLKLineModel *> *)allKLineModels {
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"data" ofType:@"json"];
-    NSData *data = [[NSData alloc] initWithContentsOfFile:path];
-    
-    NSArray<NSArray<NSString *> *> *array = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
-    
-    __block NSMutableArray<HLKLineModel *> *entries = @[].mutableCopy;
-    
-    [array enumerateObjectsUsingBlock:^(NSArray<NSString *> * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        HLKLineModel *model = [HLKLineModel new];
-        model.date = obj[0];
-        model.open = @(obj[1].doubleValue);
-        model.close = @(obj[2].doubleValue);
-        model.high = @(obj[3].doubleValue);
-        model.low = @(obj[4].doubleValue);
-        
-        [entries addObject:model];
-    }];
-    
-    return entries;
+//- (NSArray<HLKLineModel *> *)kLineModels {
+//    if (!_kLineModels) {
+//        _kLineModels = [self allKLineModels];
+//    }
+//    return _kLineModels;
+//}
+
+#pragma mark - Getter & Setter
+
+//- (NSMutableArray<HLKLineModel *> *)lineModels {
+//    return [self.kLineModels subarrayWithRange:NSMakeRange(0, 20)].mutableCopy;
+//}
+
+- (NSInteger)startXPosition {
+    return 0;
 }
 
-- (NSArray<HLKLineModel *> *)kLineModels {
-    if (!_kLineModels) {
-        _kLineModels = [self allKLineModels];
-    }
-    return _kLineModels;
+- (NSInteger)needDrawStartIndex {
+    CGFloat k_line_width = lineWidth();
+    CGFloat scrollViewOffsetX = self.parentScrollView.contentOffset.x < 0 ? 0: self.parentScrollView.contentOffset.x;
+    NSUInteger leftArrCount = ABS(scrollViewOffsetX - 1) / (1 + k_line_width);
+    _needDrawStartIndex = leftArrCount;
+    
+    return _needDrawStartIndex;
 }
 
-#pragma mark - Getter
-
-- (NSMutableArray<HLKLineModel *> *)lineModels {
-    return [self.kLineModels subarrayWithRange:NSMakeRange(0, 20)].mutableCopy;
+- (void)setKLineModels:(NSArray<HLKLineModel *> *)kLineModels {
+    _kLineModels = kLineModels;
+    [self updateMainViewWidth];
 }
 
 @end

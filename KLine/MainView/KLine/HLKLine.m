@@ -41,7 +41,7 @@
     
     CGContextSetStrokeColorWithColor(context, strokeColor.CGColor);
     
-    CGContextSetLineWidth(context, LINE_WIDTH);
+    CGContextSetLineWidth(context, lineWidth());
     const CGPoint solidPoints[] = {self.position_model.open_point, self.position_model.close_point};
     CGContextStrokeLineSegments(context, solidPoints, 2);
     

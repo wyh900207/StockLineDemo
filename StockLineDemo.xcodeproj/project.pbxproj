@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		09380A06226D6049005ADA25 /* OTJDateUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 09380A05226D6049005ADA25 /* OTJDateUtils.m */; };
+		09380A09226D7202005ADA25 /* OTJKLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09380A08226D7202005ADA25 /* OTJKLineView.m */; };
 		09738FAB2268774E00F3B404 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 09738FAA2268774E00F3B404 /* AppDelegate.m */; };
 		09738FAE2268774E00F3B404 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09738FAD2268774E00F3B404 /* ViewController.m */; };
 		09738FB12268774E00F3B404 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09738FAF2268774E00F3B404 /* Main.storyboard */; };
@@ -26,6 +27,8 @@
 /* Begin PBXFileReference section */
 		09380A04226D6049005ADA25 /* OTJDateUtils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OTJDateUtils.h; sourceTree = "<group>"; };
 		09380A05226D6049005ADA25 /* OTJDateUtils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OTJDateUtils.m; sourceTree = "<group>"; };
+		09380A07226D7202005ADA25 /* OTJKLineView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OTJKLineView.h; sourceTree = "<group>"; };
+		09380A08226D7202005ADA25 /* OTJKLineView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OTJKLineView.m; sourceTree = "<group>"; };
 		09738FA62268774E00F3B404 /* StockLineDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StockLineDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09738FA92268774E00F3B404 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		09738FAA2268774E00F3B404 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -132,6 +135,8 @@
 				09738FC82268811C00F3B404 /* KLine */,
 				09738FC322687E2D00F3B404 /* HLKLineMainView.h */,
 				09738FC422687E2D00F3B404 /* HLKLineMainView.m */,
+				09380A07226D7202005ADA25 /* OTJKLineView.h */,
+				09380A08226D7202005ADA25 /* OTJKLineView.m */,
 			);
 			path = MainView;
 			sourceTree = "<group>";
@@ -290,6 +295,7 @@
 				09738FB92268774F00F3B404 /* main.m in Sources */,
 				09738FAB2268774E00F3B404 /* AppDelegate.m in Sources */,
 				09738FC522687E2D00F3B404 /* HLKLineMainView.m in Sources */,
+				09380A09226D7202005ADA25 /* OTJKLineView.m in Sources */,
 				09738FD7226977AB00F3B404 /* UIColor+Hex.m in Sources */,
 				09738FD4226963E900F3B404 /* HLKLinePositionModel.m in Sources */,
 				09738FD0226881A800F3B404 /* HLKLineModel.m in Sources */,

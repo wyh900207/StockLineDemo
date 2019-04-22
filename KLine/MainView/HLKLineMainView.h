@@ -8,9 +8,36 @@
 
 #import <UIKit/UIKit.h>
 #import "HLKLineConfig.h"
-@class HLKLineModel;
+@class HLKLineModel, HLKLinePositionModel;
 
 @protocol HLKLineMainViewDelegate <NSObject>
+
+@optional
+
+/**
+ *  长按显示手指按着的Y_KLinePosition和KLineModel
+ */
+- (void)kLineMainViewLongPressKLinePositionModel:(HLKLinePositionModel *)kLinePositionModel kLineModel:(HLKLineModel *)kLineModel;
+
+/**
+ *  当前MainView的最大值和最小值
+ */
+- (void)kLineMainViewCurrentMaxPrice:(CGFloat)maxPrice minPrice:(CGFloat)minPrice;
+
+/**
+ *  当前需要绘制的K线模型数组
+ */
+- (void)kLineMainViewCurrentNeedDrawKLineModels:(NSArray *)needDrawKLineModels;
+
+/**
+ *  当前需要绘制的K线位置模型数组
+ */
+- (void)kLineMainViewCurrentNeedDrawKLinePositionModels:(NSArray *)needDrawKLinePositionModels;
+
+/**
+ *  当前需要绘制的K线颜色数组
+ */
+- (void)kLineMainViewCurrentNeedDrawKLineColors:(NSArray *)kLineColors;
 
 @optional
 
