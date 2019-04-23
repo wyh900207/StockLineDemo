@@ -14,9 +14,8 @@
 
 #import <Masonry/Masonry.h>
 
-@interface ViewController ()
+@interface ViewController ()<OTJSegmentViewDelegate>
 
-//@property (nonatomic, strong) UIScrollView *scrollView;
 @property (nonatomic, strong) OTJKLineView *mainview;
 @property (nonatomic, strong) OTJQuotationPriceView *priceView;
 @property (nonatomic, strong) OTJSegmentView *segmentView;
@@ -49,25 +48,11 @@
         make.left.right.equalTo(self.view);
         make.height.equalTo(@200);
     }];
-    
-    
-    self.segmentView.titles = @[@"分时", @"1分", @"1分", @"1分", @"1分", @"1分"];
 
     [self.mainview reDraw];
 }
 
 #pragma mark - Getter
-
-//- (UIScrollView *)scrollView {
-//    if (!_scrollView) {
-//        _scrollView = [UIScrollView new];
-//        _scrollView.frame = CGRectMake(0, 100, self.view.bounds.size.width, 200);
-//        _scrollView.minimumZoomScale = 1.0;
-//        _scrollView.maximumZoomScale = 1.0f;
-//        _scrollView.bounces = NO;
-//    }
-//    return _scrollView;
-//}
 
 - (OTJKLineView *)mainview {
     if (!_mainview) {
@@ -88,8 +73,8 @@
 - (OTJSegmentView *)segmentView {
     if (!_segmentView) {
         _segmentView = [OTJSegmentView new];
-        _segmentView.backgroundColor = [UIColor orangeColor];
-        _segmentView.titles = @[@"分时", @"1分", @"1分", @"1分", @"1分", @"1分"];
+        _segmentView.delegate = self;
+        _segmentView.titles = @[@"分时", @"1分", @"5分", @"15分", @"30分", @"60分"];
     }
     return _segmentView;
 }
@@ -117,6 +102,13 @@
     }];
     
     return entries;
+}
+
+#pragma mark - OTJSegmentViewDelegate
+
+- (void)segmentView:(OTJSegmentView *)segmentView didSelectIndex:(NSInteger)index {
+    NSLog(@"%lu", index);
+    // TODO: 更新K线展示形式
 }
 
 @end

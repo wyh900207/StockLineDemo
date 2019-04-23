@@ -12,6 +12,8 @@
 @interface OTJSegmentView ()
 
 @property (nonatomic, strong) NSMutableArray<UIButton *> *buttons;
+@property (nonatomic, strong) UIImageView *line;
+@property (nonatomic, assign) NSInteger currentSelectedIndex;
 
 @end
 
@@ -20,16 +22,69 @@
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
-        
+        self.backgroundColor = [UIColor colorWithRed:248/255.0 green:248/255.0 blue:248/255.0 alpha:1/1.0];
+        self.currentSelectedIndex = 1;
     }
     return self;
 }
 
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    
+    UIButton *tmp_button;
+    
+    for (UIButton *btn in self.buttons) {
+        [btn removeFromSuperview];
+    }
+    
+    [self.line removeFromSuperview];
+    
+    CGFloat count = self.titles.count;
+    CGFloat width = self.bounds.size.width / count;
+    
+    for (int i = 0; i < self.titles.count; i++) {
+        UIColor *normal_color =  [UIColor colorWithRed:135/255.0 green:135/255.0 blue:135/255.0 alpha:1/1.0];
+        UIColor *selected_color = [UIColor colorWithRed:51/255.0 green:51/255.0 blue:51/255.0 alpha:1/1.0];
+        
+        UIButton *button = [UIButton new];
+        button.tag = i;
+        button.titleLabel.font = [UIFont systemFontOfSize:14];
+        [button setTitle:self.titles[i] forState:UIControlStateNormal];
+        [button setTitle:self.titles[i] forState:UIControlStateSelected];
+        [button setTitleColor:normal_color forState:UIControlStateNormal];
+        [button setTitleColor:selected_color forState:UIControlStateSelected];
+        [button addTarget:self action:@selector(exchangedMainViewType:) forControlEvents:UIControlEventTouchUpInside];
+
+        button.frame = CGRectMake(width * i, 0, width, self.bounds.size.height);
+        [self addSubview:button];
+        
+        tmp_button = button;
+        
+        [self.buttons addObject:button];
+    }
+    
+    CGFloat line_origin_x = width * self.currentSelectedIndex + (width - 30) * 0.5;
+    
+    self.line.frame = CGRectMake(line_origin_x, self.bounds.size.height - 3, 30, 3);
+    [self addSubview:self.line];
+}
 
 #pragma mark - Private
 
 - (void)exchangedMainViewType:(UIButton *)button {
+    self.currentSelectedIndex = button.tag;
     
+    CGFloat count = self.titles.count;
+    CGFloat width = self.bounds.size.width / count;
+    CGFloat line_origin_x = width * self.currentSelectedIndex + (width - 30) * 0.5;
+    
+    [UIView animateWithDuration:0.3 animations:^{
+        self.line.frame = CGRectMake(line_origin_x, self.bounds.size.height - 3, 30, 3);
+    }];
+    
+    if (self.delegate && [self.delegate respondsToSelector:@selector(segmentView:didSelectIndex:)]) {
+        [self.delegate segmentView:self didSelectIndex:button.tag];
+    }
 }
 
 #pragma mark - Getter
@@ -39,50 +94,7 @@
     
     [self layoutIfNeeded];
     
-    UIButton *tmp_button;
-    
-    for (int i = 0; i < self.titles.count; i++) {
-        UIButton *button = [UIButton new];
-        button.tag = i;
-        [button setTitle:self.titles[i] forState:UIControlStateNormal];
-        [button setTitle:self.titles[i] forState:UIControlStateSelected];
-        [button setTitleColor:[UIColor blackColor] forState:UIControlStateSelected];
-        [button setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
-        [button addTarget:self action:@selector(exchangedMainViewType:) forControlEvents:UIControlEventTouchUpInside];
-        
-        CGFloat count = self.titles.count;
-        CGFloat width = self.bounds.size.width / count;
-        
-        button.frame = CGRectMake(count * i, 0, width, self.bounds.size.height);
-        
-        [self addSubview:button];
-        
-        //        if (i == 0) {
-        //            [tmp_button mas_makeConstraints:^(MASConstraintMaker *make) {
-        //                make.bottom.top.equalTo(self);
-        //                make.left.equalTo(self);
-        //            }];
-        //        }
-        //        else if (i == self.titles.count - 1) {
-        //            [tmp_button mas_makeConstraints:^(MASConstraintMaker *make) {
-        //                make.bottom.top.equalTo(self);
-        //                make.left.equalTo(tmp_button.mas_right);
-        //                make.width.equalTo(tmp_button);
-        //                make.right.equalTo(self);
-        //            }];
-        //        }
-        //        else {
-        //            [tmp_button mas_makeConstraints:^(MASConstraintMaker *make) {
-        //                make.bottom.top.equalTo(self);
-        //                make.left.equalTo(tmp_button.mas_right);
-        //                make.width.equalTo(tmp_button);
-        //            }];
-        //        }
-        
-        
-        
-        tmp_button = button;
-    }
+
 }
 
 - (NSMutableArray<UIButton *> *)buttons {
@@ -90,6 +102,14 @@
         _buttons = @[].mutableCopy;
     }
     return _buttons;
+}
+
+- (UIImageView *)line {
+    if (!_line) {
+        _line = [UIImageView new];
+        _line.image = [UIImage imageNamed:@"line"];
+    }
+    return _line;
 }
 
 @end
