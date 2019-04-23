@@ -37,7 +37,7 @@
     
     CGContextRef context = self.context;
     
-    UIColor *strokeColor = self.line_model.open.floatValue < self.line_model.close.floatValue ? [UIColor greenColor] : [UIColor redColor];
+    UIColor *strokeColor = self.line_model.open.floatValue < self.line_model.close.floatValue ? HexColor(@"0ADC71") : HexColor(@"FF315C");
     
     CGContextSetStrokeColorWithColor(context, strokeColor.CGColor);
     
