@@ -80,7 +80,7 @@
 
     CGContextRef context = UIGraphicsGetCurrentContext();
 
-    CGContextSetFillColorWithColor(context, [UIColor blackColor].CGColor);
+    CGContextSetFillColorWithColor(context, [UIColor whiteColor].CGColor);
     CGContextFillRect(context, rect);
     CGContextFillRect(context, rect);
 
@@ -89,11 +89,11 @@
     NSMutableArray *kLineColors = @[].mutableCopy;
     
     // K线图上部的各种指标
-    CGContextSetFillColorWithColor(context, ASSIST_BACKGROUND_COLOR.CGColor);
+    CGContextSetFillColorWithColor(context, [UIColor whiteColor].CGColor); // ASSIST_BACKGROUND_COLOR.CGColor
     CGContextFillRect(context, CGRectMake(0, 0, rect.size.width, 15));
 
     // 日期区域背景色
-    CGContextSetFillColorWithColor(context, ASSIST_BACKGROUND_COLOR.CGColor);
+    CGContextSetFillColorWithColor(context, [UIColor whiteColor].CGColor); // ASSIST_BACKGROUND_COLOR.CGColor
     CGContextFillRect(context, CGRectMake(0, rect.size.height - 15, rect.size.width, 15));
 
     if (self.type == HLKLineMainViewTypeKLine) {

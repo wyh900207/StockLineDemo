@@ -11,6 +11,7 @@
 		09380A09226D7202005ADA25 /* OTJKLineView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09380A08226D7202005ADA25 /* OTJKLineView.m */; };
 		09380A0C226DB22B005ADA25 /* OTJQuotationPriceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09380A0B226DB22B005ADA25 /* OTJQuotationPriceView.m */; };
 		09380A11226DC56D005ADA25 /* OTJSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09380A10226DC56D005ADA25 /* OTJSegmentView.m */; };
+		09380A18226EBB06005ADA25 /* OTJMainViewIndicationSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09380A17226EBB06005ADA25 /* OTJMainViewIndicationSegmentView.m */; };
 		09738FAB2268774E00F3B404 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 09738FAA2268774E00F3B404 /* AppDelegate.m */; };
 		09738FAE2268774E00F3B404 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09738FAD2268774E00F3B404 /* ViewController.m */; };
 		09738FB12268774E00F3B404 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09738FAF2268774E00F3B404 /* Main.storyboard */; };
@@ -36,6 +37,8 @@
 		09380A0F226DC56D005ADA25 /* OTJSegmentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OTJSegmentView.h; sourceTree = "<group>"; };
 		09380A10226DC56D005ADA25 /* OTJSegmentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OTJSegmentView.m; sourceTree = "<group>"; };
 		09380A12226EB855005ADA25 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		09380A16226EBB06005ADA25 /* OTJMainViewIndicationSegmentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OTJMainViewIndicationSegmentView.h; sourceTree = "<group>"; };
+		09380A17226EBB06005ADA25 /* OTJMainViewIndicationSegmentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OTJMainViewIndicationSegmentView.m; sourceTree = "<group>"; };
 		09738FA62268774E00F3B404 /* StockLineDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StockLineDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09738FA92268774E00F3B404 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		09738FAA2268774E00F3B404 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -90,6 +93,8 @@
 			children = (
 				09380A0F226DC56D005ADA25 /* OTJSegmentView.h */,
 				09380A10226DC56D005ADA25 /* OTJSegmentView.m */,
+				09380A16226EBB06005ADA25 /* OTJMainViewIndicationSegmentView.h */,
+				09380A17226EBB06005ADA25 /* OTJMainViewIndicationSegmentView.m */,
 			);
 			path = SegementView;
 			sourceTree = "<group>";
@@ -329,6 +334,7 @@
 				09738FD7226977AB00F3B404 /* UIColor+Hex.m in Sources */,
 				09738FD4226963E900F3B404 /* HLKLinePositionModel.m in Sources */,
 				09738FD0226881A800F3B404 /* HLKLineModel.m in Sources */,
+				09380A18226EBB06005ADA25 /* OTJMainViewIndicationSegmentView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

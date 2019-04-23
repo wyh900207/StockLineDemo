@@ -7,12 +7,13 @@
 //
 
 #import "OTJSegmentView.h"
-#import <Masonry/Masonry.h>
 
 @interface OTJSegmentView ()
 
 @property (nonatomic, strong) NSMutableArray<UIButton *> *buttons;
 @property (nonatomic, strong) UIImageView *line;
+@property (nonatomic, strong) UIView *topLine;
+@property (nonatomic, strong) UIView *bottomLine;
 @property (nonatomic, assign) NSInteger currentSelectedIndex;
 
 @end
@@ -38,6 +39,8 @@
     }
     
     [self.line removeFromSuperview];
+    [self.topLine removeFromSuperview];
+    [self.bottomLine removeFromSuperview];
     
     CGFloat count = self.titles.count;
     CGFloat width = self.bounds.size.width / count;
@@ -64,9 +67,14 @@
     }
     
     CGFloat line_origin_x = width * self.currentSelectedIndex + (width - 30) * 0.5;
-    
     self.line.frame = CGRectMake(line_origin_x, self.bounds.size.height - 3, 30, 3);
+    
+    self.topLine.frame = CGRectMake(0, 0, self.bounds.size.width, 0.5);
+    self.bottomLine.frame = CGRectMake(0, self.bounds.size.height - 0.5, self.bounds.size.width, 0.5);
+    
     [self addSubview:self.line];
+    [self addSubview:self.topLine];
+    [self addSubview:self.bottomLine];
 }
 
 #pragma mark - Private
@@ -110,6 +118,22 @@
         _line.image = [UIImage imageNamed:@"line"];
     }
     return _line;
+}
+
+- (UIView *)topLine {
+    if (!_topLine) {
+        _topLine = [UIView new];
+        _topLine.backgroundColor = HexColor(@"E6E6E6");
+    }
+    return _topLine;
+}
+
+- (UIView *)bottomLine {
+    if (!_bottomLine) {
+        _bottomLine = [UIView new];
+        _bottomLine.backgroundColor = HexColor(@"E6E6E6");
+    }
+    return _bottomLine;
 }
 
 @end
