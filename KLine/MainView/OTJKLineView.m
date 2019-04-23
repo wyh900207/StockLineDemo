@@ -10,8 +10,9 @@
 #import "HLKLineMainView.h"
 #import "OTJSegmentView.h"
 #import "OTJMainViewIndicationSegmentView.h"
+#import "OTJAssistView.h"
 
-@interface OTJKLineView () <UIScrollViewDelegate, HLKLineMainViewDelegate, OTJSegmentViewDelegate, OTJMainViewIndicationSegmentViewDelegate>
+@interface OTJKLineView () <UIScrollViewDelegate, HLKLineMainViewDelegate, OTJSegmentViewDelegate, OTJMainViewIndicationSegmentViewDelegate, OTJAssistViewDelegate>
 
 @property (nonatomic, strong) UIScrollView *scrollView;
 // 分时选择器
@@ -24,6 +25,9 @@
 @property (nonatomic, assign) CGFloat *oldExactOffset;
 // 辅视图指标选择器
 @property (nonatomic, strong) OTJMainViewIndicationSegmentView *assistSegmentView;
+// 副图
+@property (nonatomic, strong) OTJAssistView *kLineAccessoryView;
+
 
 @end
 
@@ -147,6 +151,22 @@
     return _assistSegmentView;
 }
 
+- (OTJAssistView *)kLineAccessoryView {
+    if(!_kLineAccessoryView && self)
+    {
+        _kLineAccessoryView = [OTJAssistView new];
+        _kLineAccessoryView.delegate = self;
+        [self.scrollView addSubview:_kLineAccessoryView];
+        [_kLineAccessoryView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.width.equalTo(self.kLineMainView);
+            make.top.equalTo(self.assistSegmentView.mas_bottom);
+            make.bottom.equalTo(self);
+        }];
+        [self layoutIfNeeded];
+    }
+    return _kLineAccessoryView;
+}
+
 - (void)setKLineModels:(NSArray<HLKLineModel *> *)kLineModels {
     _kLineModels = kLineModels;
     
@@ -229,14 +249,19 @@
 
 - (void)kLineMainViewCurrentNeedDrawKLineModels:(NSArray *)needDrawKLineModels {
     // 更新 辅助视图和 成交量视图的 models
+    self.kLineAccessoryView.needDrawKLineModels = needDrawKLineModels;
 }
 
 - (void)kLineMainViewCurrentNeedDrawKLinePositionModels:(NSArray *)needDrawKLinePositionModels {
     // 更新 辅助视图和 成交量视图的 models
+    self.kLineAccessoryView.needDrawKLinePositionModels = needDrawKLinePositionModels;
 }
 
 - (void)kLineMainViewCurrentNeedDrawKLineColors:(NSArray *)kLineColors {
     // 成交量视图颜色更新
+    self.kLineAccessoryView.kLineColors = kLineColors;
+    self.kLineAccessoryView.targetLineStatus = HLKLineTypeMACD;
+    [self private_drawKLineAccessoryView];
 }
 
 - (void)kLineMainViewLongPressKLinePositionModel:(HLKLinePositionModel *)kLinePositionModel kLineModel:(HLKLineModel *)kLineModel {
@@ -266,6 +291,19 @@
     else {
         // 成交量视图
     }
+}
+
+#pragma mark - OTJAssistViewDelegate
+
+- (void)kLineAccessoryViewCurrentMaxValue:(CGFloat)maxValue minValue:(CGFloat)minValue {
+    
+}
+
+#pragma mark - Private
+
+- (void)private_drawKLineAccessoryView {
+    [self.kLineAccessoryView layoutIfNeeded];
+    [self.kLineAccessoryView draw];
 }
 
 @end

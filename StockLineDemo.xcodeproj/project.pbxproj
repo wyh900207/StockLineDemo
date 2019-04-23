@@ -12,6 +12,12 @@
 		09380A0C226DB22B005ADA25 /* OTJQuotationPriceView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09380A0B226DB22B005ADA25 /* OTJQuotationPriceView.m */; };
 		09380A11226DC56D005ADA25 /* OTJSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09380A10226DC56D005ADA25 /* OTJSegmentView.m */; };
 		09380A18226EBB06005ADA25 /* OTJMainViewIndicationSegmentView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09380A17226EBB06005ADA25 /* OTJMainViewIndicationSegmentView.m */; };
+		09380A1D226EEF72005ADA25 /* OTJVolumeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09380A1C226EEF72005ADA25 /* OTJVolumeView.m */; };
+		09380A22226EF161005ADA25 /* OTJVolumeKLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 09380A21226EF161005ADA25 /* OTJVolumeKLine.m */; };
+		09380A25226EF1A6005ADA25 /* OTJVolumePositionModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 09380A24226EF1A6005ADA25 /* OTJVolumePositionModel.m */; };
+		09380A29226EF7F7005ADA25 /* OTJAssistLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 09380A28226EF7F7005ADA25 /* OTJAssistLine.m */; };
+		09380A2C226EFCE0005ADA25 /* OTJAssistView.m in Sources */ = {isa = PBXBuildFile; fileRef = 09380A2B226EFCE0005ADA25 /* OTJAssistView.m */; };
+		09380A2F226F0025005ADA25 /* OTJMALine.m in Sources */ = {isa = PBXBuildFile; fileRef = 09380A2E226F0025005ADA25 /* OTJMALine.m */; };
 		09738FAB2268774E00F3B404 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 09738FAA2268774E00F3B404 /* AppDelegate.m */; };
 		09738FAE2268774E00F3B404 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 09738FAD2268774E00F3B404 /* ViewController.m */; };
 		09738FB12268774E00F3B404 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 09738FAF2268774E00F3B404 /* Main.storyboard */; };
@@ -39,6 +45,18 @@
 		09380A12226EB855005ADA25 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		09380A16226EBB06005ADA25 /* OTJMainViewIndicationSegmentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OTJMainViewIndicationSegmentView.h; sourceTree = "<group>"; };
 		09380A17226EBB06005ADA25 /* OTJMainViewIndicationSegmentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OTJMainViewIndicationSegmentView.m; sourceTree = "<group>"; };
+		09380A1B226EEF72005ADA25 /* OTJVolumeView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OTJVolumeView.h; sourceTree = "<group>"; };
+		09380A1C226EEF72005ADA25 /* OTJVolumeView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OTJVolumeView.m; sourceTree = "<group>"; };
+		09380A20226EF161005ADA25 /* OTJVolumeKLine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OTJVolumeKLine.h; sourceTree = "<group>"; };
+		09380A21226EF161005ADA25 /* OTJVolumeKLine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OTJVolumeKLine.m; sourceTree = "<group>"; };
+		09380A23226EF1A6005ADA25 /* OTJVolumePositionModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OTJVolumePositionModel.h; sourceTree = "<group>"; };
+		09380A24226EF1A6005ADA25 /* OTJVolumePositionModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OTJVolumePositionModel.m; sourceTree = "<group>"; };
+		09380A27226EF7F7005ADA25 /* OTJAssistLine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OTJAssistLine.h; sourceTree = "<group>"; };
+		09380A28226EF7F7005ADA25 /* OTJAssistLine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OTJAssistLine.m; sourceTree = "<group>"; };
+		09380A2A226EFCE0005ADA25 /* OTJAssistView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OTJAssistView.h; sourceTree = "<group>"; };
+		09380A2B226EFCE0005ADA25 /* OTJAssistView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OTJAssistView.m; sourceTree = "<group>"; };
+		09380A2D226F0025005ADA25 /* OTJMALine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OTJMALine.h; sourceTree = "<group>"; };
+		09380A2E226F0025005ADA25 /* OTJMALine.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OTJMALine.m; sourceTree = "<group>"; };
 		09738FA62268774E00F3B404 /* StockLineDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StockLineDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09738FA92268774E00F3B404 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		09738FAA2268774E00F3B404 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -99,6 +117,36 @@
 			path = SegementView;
 			sourceTree = "<group>";
 		};
+		09380A1A226EEF60005ADA25 /* VolumeView */ = {
+			isa = PBXGroup;
+			children = (
+				09380A1F226EF149005ADA25 /* Line */,
+				09380A1B226EEF72005ADA25 /* OTJVolumeView.h */,
+				09380A1C226EEF72005ADA25 /* OTJVolumeView.m */,
+			);
+			path = VolumeView;
+			sourceTree = "<group>";
+		};
+		09380A1F226EF149005ADA25 /* Line */ = {
+			isa = PBXGroup;
+			children = (
+				09380A20226EF161005ADA25 /* OTJVolumeKLine.h */,
+				09380A21226EF161005ADA25 /* OTJVolumeKLine.m */,
+			);
+			path = Line;
+			sourceTree = "<group>";
+		};
+		09380A26226EF7D9005ADA25 /* AssistView */ = {
+			isa = PBXGroup;
+			children = (
+				09380A27226EF7F7005ADA25 /* OTJAssistLine.h */,
+				09380A28226EF7F7005ADA25 /* OTJAssistLine.m */,
+				09380A2A226EFCE0005ADA25 /* OTJAssistView.h */,
+				09380A2B226EFCE0005ADA25 /* OTJAssistView.m */,
+			);
+			path = AssistView;
+			sourceTree = "<group>";
+		};
 		09738F9D2268774E00F3B404 = {
 			isa = PBXGroup;
 			children = (
@@ -147,6 +195,8 @@
 			children = (
 				09738FD12268837D00F3B404 /* HLKLineHeader.h */,
 				09738FC722687FC300F3B404 /* HLKLineConfig.h */,
+				09380A26226EF7D9005ADA25 /* AssistView */,
+				09380A1A226EEF60005ADA25 /* VolumeView */,
 				09738FCD2268819600F3B404 /* Model */,
 				09738FCC2268818300F3B404 /* MainView */,
 			);
@@ -158,6 +208,8 @@
 			children = (
 				09738FC92268813900F3B404 /* HLKLine.h */,
 				09738FCA2268813900F3B404 /* HLKLine.m */,
+				09380A2D226F0025005ADA25 /* OTJMALine.h */,
+				09380A2E226F0025005ADA25 /* OTJMALine.m */,
 			);
 			path = KLine;
 			sourceTree = "<group>";
@@ -181,6 +233,8 @@
 				09738FCF226881A800F3B404 /* HLKLineModel.m */,
 				09738FD2226963E900F3B404 /* HLKLinePositionModel.h */,
 				09738FD3226963E900F3B404 /* HLKLinePositionModel.m */,
+				09380A23226EF1A6005ADA25 /* OTJVolumePositionModel.h */,
+				09380A24226EF1A6005ADA25 /* OTJVolumePositionModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -323,17 +377,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				09380A0C226DB22B005ADA25 /* OTJQuotationPriceView.m in Sources */,
+				09380A2C226EFCE0005ADA25 /* OTJAssistView.m in Sources */,
 				09738FCB2268813900F3B404 /* HLKLine.m in Sources */,
 				09380A11226DC56D005ADA25 /* OTJSegmentView.m in Sources */,
 				09738FAE2268774E00F3B404 /* ViewController.m in Sources */,
+				09380A22226EF161005ADA25 /* OTJVolumeKLine.m in Sources */,
 				09380A06226D6049005ADA25 /* OTJDateUtils.m in Sources */,
 				09738FB92268774F00F3B404 /* main.m in Sources */,
 				09738FAB2268774E00F3B404 /* AppDelegate.m in Sources */,
 				09738FC522687E2D00F3B404 /* HLKLineMainView.m in Sources */,
+				09380A1D226EEF72005ADA25 /* OTJVolumeView.m in Sources */,
 				09380A09226D7202005ADA25 /* OTJKLineView.m in Sources */,
+				09380A2F226F0025005ADA25 /* OTJMALine.m in Sources */,
 				09738FD7226977AB00F3B404 /* UIColor+Hex.m in Sources */,
+				09380A29226EF7F7005ADA25 /* OTJAssistLine.m in Sources */,
 				09738FD4226963E900F3B404 /* HLKLinePositionModel.m in Sources */,
 				09738FD0226881A800F3B404 /* HLKLineModel.m in Sources */,
+				09380A25226EF1A6005ADA25 /* OTJVolumePositionModel.m in Sources */,
 				09380A18226EBB06005ADA25 /* OTJMainViewIndicationSegmentView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

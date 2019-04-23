@@ -18,6 +18,15 @@ typedef NS_ENUM(NSInteger, HLKLineMainViewType) {
     HLKLineMainViewTypeOther
 };
 
+typedef NS_ENUM(NSInteger, HLKLineType) {
+    HLKLineTypeMACD = 100,
+    HLKLineTypeKDJ,
+    HLKLineTypeRSI,
+    HLKLineTypeSMA,
+    HLKLineTypeEMA,
+    HLKLineTypeBOLL = 105
+};
+
 // K线 默认宽度
 #define LINE_WIDTH 5
 // K线 最大宽度
