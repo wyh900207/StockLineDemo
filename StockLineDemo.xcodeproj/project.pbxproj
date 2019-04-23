@@ -35,6 +35,7 @@
 		09380A0B226DB22B005ADA25 /* OTJQuotationPriceView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OTJQuotationPriceView.m; sourceTree = "<group>"; };
 		09380A0F226DC56D005ADA25 /* OTJSegmentView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OTJSegmentView.h; sourceTree = "<group>"; };
 		09380A10226DC56D005ADA25 /* OTJSegmentView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OTJSegmentView.m; sourceTree = "<group>"; };
+		09380A12226EB855005ADA25 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		09738FA62268774E00F3B404 /* StockLineDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StockLineDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		09738FA92268774E00F3B404 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		09738FAA2268774E00F3B404 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -131,6 +132,7 @@
 				09738FB72268774F00F3B404 /* Info.plist */,
 				09738FB82268774F00F3B404 /* main.m */,
 				09738FD82269AA9300F3B404 /* data.json */,
+				09380A12226EB855005ADA25 /* PrefixHeader.pch */,
 			);
 			path = StockLineDemo;
 			sourceTree = "<group>";
@@ -472,6 +474,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3U4T4928GM;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/StockLineDemo/PrefixHeader.pch";
 				INFOPLIST_FILE = StockLineDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -492,6 +495,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3U4T4928GM;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/StockLineDemo/PrefixHeader.pch";
 				INFOPLIST_FILE = StockLineDemo/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
