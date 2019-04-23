@@ -56,7 +56,7 @@
     
     NSString *dateStr = [OTJDateUtils dateStringWith:self.line_model.date];
     
-    CGPoint draw_date_point = CGPointMake(self.position_model.low_point.x + 1, self.maxY + 1.5);
+    CGPoint draw_date_point = CGPointMake(self.position_model.low_point.x + 1, self.maxY + 6);
     if (CGPointEqualToPoint(self.lastDrawDatePoint, CGPointZero) || draw_date_point.x - self.lastDrawDatePoint.x > 60) {
         [dateStr drawAtPoint:draw_date_point withAttributes:@{NSFontAttributeName: [UIFont systemFontOfSize:11],
                                                               NSForegroundColorAttributeName: ASSIST_TEXT_COLOR

@@ -94,11 +94,23 @@
 
     // 日期区域背景色
     CGContextSetFillColorWithColor(context, [UIColor whiteColor].CGColor); // ASSIST_BACKGROUND_COLOR.CGColor
-    CGContextFillRect(context, CGRectMake(0, rect.size.height - 15, rect.size.width, 15));
+    CGContextFillRect(context, CGRectMake(0, rect.size.height - 15, rect.size.width, 24));
+    
+    // 日期上&下线条
+    CGContextSetLineWidth(context, 0.5);
+    CGPoint left_top_point = CGPointMake(0, rect.size.height - 24);
+    CGPoint right_top_point = CGPointMake(rect.size.width, rect.size.height - 24);
+    CGPoint left_bottom_point = CGPointMake(0, rect.size.height - 0.5);
+    CGPoint right_bottom_point = CGPointMake(rect.size.width, rect.size.height - 0.5);
+    CGContextSetStrokeColorWithColor(context, HexColor(@"E6E6E6").CGColor);
+    const CGPoint top_line[] = {left_top_point, right_top_point};
+    const CGPoint bottom_line[] = {left_bottom_point, right_bottom_point};
+    CGContextStrokeLineSegments(context, top_line, 2);
+    CGContextStrokeLineSegments(context, bottom_line, 2);
 
     if (self.type == HLKLineMainViewTypeKLine) {
         HLKLine *line = [[HLKLine alloc] initWithContext:context];
-        line.maxY = rect.size.height - 15;
+        line.maxY = rect.size.height - 24;
 
         [self.positionModels enumerateObjectsUsingBlock:^(HLKLinePositionModel * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
             line.position_model = obj;
@@ -220,7 +232,7 @@
     }];
 
     CGFloat minY = 20;
-    CGFloat maxY = self.bounds.size.height - 15;
+    CGFloat maxY = self.bounds.size.height - 24;
     CGFloat unitValue = (maxAssert - minAssert) / (maxY - minY);  // 没个物理像素对应多少大盘点
     
     /*

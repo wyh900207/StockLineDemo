@@ -63,6 +63,7 @@
     self.bottomLine.frame = CGRectMake(0, self.bounds.size.height - 0.5, self.bounds.size.width, 0.5);
     [self addSubview:self.bottomLine];
     
+    if (!self.titles) return;
     self.selectedButton = self.buttons[self.currentSelectedIndex];
     self.selectedButton.backgroundColor = HexColor(@"F1F1F1");
 }

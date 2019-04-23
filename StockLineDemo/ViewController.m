@@ -10,15 +10,11 @@
 //#import "HLKLineMainView.h"
 #import "OTJKLineView.h"
 #import "OTJQuotationPriceView.h"
-#import "OTJSegmentView.h"
-#import "OTJMainViewIndicationSegmentView.h"
 
-@interface ViewController ()<OTJSegmentViewDelegate, OTJMainViewIndicationSegmentViewDelegate>
+@interface ViewController ()
 
 @property (nonatomic, strong) OTJKLineView *mainview;
 @property (nonatomic, strong) OTJQuotationPriceView *priceView;
-@property (nonatomic, strong) OTJSegmentView *segmentView;
-@property (nonatomic, strong) OTJMainViewIndicationSegmentView *mainIndicationView;
 
 @end
 
@@ -31,28 +27,16 @@
     
     [self.view addSubview:self.priceView];
     [self.view addSubview:self.mainview];
-    [self.view addSubview:self.segmentView];
-    [self.view addSubview:self.mainIndicationView];
     
     [self.priceView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.view).inset(64);
         make.left.right.equalTo(self.view);
         make.height.equalTo(@70);
     }];
-    [self.segmentView mas_makeConstraints:^(MASConstraintMaker *make) {
+    [self.mainview mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self.priceView.mas_bottom);
         make.left.right.equalTo(self.view);
-        make.height.equalTo(@40);
-    }];
-    [self.mainIndicationView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.segmentView.mas_bottom);
-        make.left.right.equalTo(self.view);
-        make.height.equalTo(@30);
-    }];
-    [self.mainview mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.top.equalTo(self.mainIndicationView.mas_bottom);
-        make.left.right.equalTo(self.view);
-        make.height.equalTo(@200);
+        make.bottom.equalTo(self.view);
     }];
 
     [self.mainview reDraw];
@@ -63,6 +47,7 @@
 - (OTJKLineView *)mainview {
     if (!_mainview) {
         _mainview = [OTJKLineView new];
+        _mainview.mainViewRatio = 0.5;
         _mainview.mainViewType = HLKLineMainViewTypeKLine;
         _mainview.kLineModels = [self allKLineModels];
     }
@@ -74,24 +59,6 @@
         _priceView = [OTJQuotationPriceView new];
     }
     return _priceView;
-}
-
-- (OTJSegmentView *)segmentView {
-    if (!_segmentView) {
-        _segmentView = [OTJSegmentView new];
-        _segmentView.delegate = self;
-        _segmentView.titles = @[@"分时", @"1分", @"5分", @"15分", @"30分", @"60分"];
-    }
-    return _segmentView;
-}
-
-- (OTJMainViewIndicationSegmentView *)mainIndicationView {
-    if (!_mainIndicationView) {
-        _mainIndicationView = [OTJMainViewIndicationSegmentView new];
-        _mainIndicationView.delegate = self;
-        _mainIndicationView.titles = @[@"SMA", @"EMA", @"BOLL"];
-    }
-    return _mainIndicationView;
 }
 
 #pragma mark - Private
@@ -117,20 +84,6 @@
     }];
     
     return entries;
-}
-
-#pragma mark - OTJSegmentViewDelegate
-
-- (void)segmentView:(OTJSegmentView *)segmentView didSelectIndex:(NSInteger)index {
-    NSLog(@"%lu", index);
-    // TODO: 更新K线展示形式
-}
-
-#pragma mark - OTJMainViewIndicationSegmentViewDelegate
-
-- (void)mainIndicationView:(OTJMainViewIndicationSegmentView *)indicationView didSelectIndex:(NSInteger)index {
-    NSLog(@"%lu", index);
-    // TODO: 更新K线辅助线
 }
 
 @end

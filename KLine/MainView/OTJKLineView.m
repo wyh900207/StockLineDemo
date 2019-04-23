@@ -8,26 +8,41 @@
 
 #import "OTJKLineView.h"
 #import "HLKLineMainView.h"
-#import <Masonry/Masonry.h>
+#import "OTJSegmentView.h"
+#import "OTJMainViewIndicationSegmentView.h"
 
-@interface OTJKLineView () <UIScrollViewDelegate, HLKLineMainViewDelegate>
+@interface OTJKLineView () <UIScrollViewDelegate, HLKLineMainViewDelegate, OTJSegmentViewDelegate, OTJMainViewIndicationSegmentViewDelegate>
 
 @property (nonatomic, strong) UIScrollView *scrollView;
+// 分时选择器
+@property (nonatomic, strong) OTJSegmentView *segmentView;
+// 主视图指标选择器
+@property (nonatomic, strong) OTJMainViewIndicationSegmentView *mainSegmentView;
 // 主视图
 @property (nonatomic, strong) HLKLineMainView *kLineMainView;
 // 旧的scrollview准确位移
 @property (nonatomic, assign) CGFloat *oldExactOffset;
+// 辅视图指标选择器
+@property (nonatomic, strong) OTJMainViewIndicationSegmentView *assistSegmentView;
 
 @end
 
 @implementation OTJKLineView
 
+#pragma mark - Life Cycle
+
 - (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
         self.mainViewRatio = 1.f;
+        [self bringSubviewToFront:self.assistSegmentView];
     }
     return self;
+}
+
+- (void)dealloc {
+    [_kLineMainView removeAllObserver];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - Getter & Setter
@@ -63,19 +78,73 @@
     return _scrollView;
 }
 
+- (OTJSegmentView *)segmentView {
+    if (!_segmentView) {
+        _segmentView = [OTJSegmentView new];
+        _segmentView.delegate = self;
+        _segmentView.titles = @[@"分时", @"1分", @"5分", @"15分", @"30分", @"60分"];
+        [self addSubview:_segmentView];
+        [_segmentView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self);
+            make.left.right.equalTo(self);
+            make.height.equalTo(@40);
+        }];
+        
+        [self layoutIfNeeded];
+    }
+    return _segmentView;
+}
+
+- (OTJMainViewIndicationSegmentView *)mainSegmentView {
+    if (!_mainSegmentView) {
+        _mainSegmentView = [OTJMainViewIndicationSegmentView new];
+        _mainSegmentView.delegate = self;
+        _mainSegmentView.titles = @[@"SMA", @"EMA", @"BOLL"];
+        [self addSubview:_mainSegmentView];
+        [_mainSegmentView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.segmentView.mas_bottom);
+            make.left.right.equalTo(self);
+            make.height.equalTo(@30);
+        }];
+        
+        [self layoutIfNeeded];
+    }
+    return _mainSegmentView;
+}
+
 - (HLKLineMainView *)kLineMainView {
     if (!_kLineMainView) {
         _kLineMainView = [HLKLineMainView new];
         _kLineMainView.delegate = self;
-//        _kLineMainView.frame = self.scrollView.bounds;
         [self.scrollView addSubview:_kLineMainView];
         [_kLineMainView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.left.equalTo(self.scrollView);
-            make.height.equalTo(self.scrollView).multipliedBy(self.mainViewRatio);
+            make.left.equalTo(self.scrollView);
+            make.top.equalTo(self.mainSegmentView.mas_bottom);
+            //make.height.equalTo(self.scrollView).multipliedBy(self.mainViewRatio);
+            make.height.equalTo(@300);
             make.width.equalTo(@0);
         }];
+        
+        [self layoutIfNeeded];
     }
     return _kLineMainView;
+}
+
+- (OTJMainViewIndicationSegmentView *)assistSegmentView {
+    if (!_assistSegmentView) {
+        _assistSegmentView = [OTJMainViewIndicationSegmentView new];
+        _assistSegmentView.delegate = self;
+        _assistSegmentView.titles = @[@"MACD", @"KDJ", @"RSI"];
+        [self addSubview:_assistSegmentView];
+        [_assistSegmentView mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.kLineMainView.mas_bottom);
+            make.left.right.equalTo(self);
+            make.height.equalTo(@30);
+        }];
+        
+        [self layoutIfNeeded];
+    }
+    return _assistSegmentView;
 }
 
 - (void)setKLineModels:(NSArray<HLKLineModel *> *)kLineModels {
@@ -174,11 +243,29 @@
     //更新ma信息
 }
 
-// MARK: - Life Cycle
 
-- (void)dealloc {
-    [_kLineMainView removeAllObserver];
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
+
+#pragma mark - OTJSegmentViewDelegate
+
+// 分时更新
+- (void)segmentView:(OTJSegmentView *)segmentView didSelectIndex:(NSInteger)index {
+    NSLog(@"%lu", index);
+    // TODO: 更新K线展示形式
+}
+
+#pragma mark - OTJMainViewIndicationSegmentViewDelegate
+
+// 辅助线更新
+- (void)mainIndicationView:(OTJMainViewIndicationSegmentView *)indicationView didSelectIndex:(NSInteger)index {
+    NSLog(@"%lu", index);
+    // TODO: 更新K线辅助线
+    
+    if (indicationView == self.mainSegmentView) {
+        // 主视图
+    }
+    else {
+        // 成交量视图
+    }
 }
 
 @end

@@ -67,7 +67,7 @@
     }
     
     CGFloat line_origin_x = width * self.currentSelectedIndex + (width - 30) * 0.5;
-    self.line.frame = CGRectMake(line_origin_x, self.bounds.size.height - 3, 30, 3);
+    self.line.frame = CGRectMake(line_origin_x, self.bounds.size.height - 3.5, 30, 3);
     
     self.topLine.frame = CGRectMake(0, 0, self.bounds.size.width, 0.5);
     self.bottomLine.frame = CGRectMake(0, self.bounds.size.height - 0.5, self.bounds.size.width, 0.5);
